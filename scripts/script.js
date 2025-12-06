@@ -72,7 +72,7 @@ async function ensureRecorderWorklet() {
   }
 
   if (!recorderWorkletLoaded) {
-    await native.audioWorklet.addModule("/scripts/tone-recorder-worklet.js");
+    await native.audioWorklet.addModule("./scripts/tone-recorder-worklet.js");
     recorderWorkletLoaded = true;
   }
   return native;
@@ -422,7 +422,9 @@ class SoundEngine {
 
     if (!this._workletLoaded) {
       try {
-        await this.ctx.audioWorklet.addModule("/scripts/SoundTouch-worklet.js");
+        await this.ctx.audioWorklet.addModule(
+          "./scripts/SoundTouch-worklet.js"
+        );
         this._workletLoaded = true;
       } catch (e) {
         console.error(
@@ -508,7 +510,7 @@ class SoundEngine {
     const offline = new OfflineAudioContext(chCount, length, sr);
 
     try {
-      await offline.audioWorklet.addModule("/scripts/SoundTouch-worklet.js");
+      await offline.audioWorklet.addModule("./scripts/SoundTouch-worklet.js");
     } catch (e) {
       console.error("Failed to add SoundTouch to offline audioWorklet:", e);
       throw e;
