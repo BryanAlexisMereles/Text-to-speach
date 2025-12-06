@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <script src="/scripts/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.0/lame.min.js"></script>
+    <title>OpenAI TTS Pitch Controller</title>
+  </head>
+  <body>
+    <h2>OpenAI TTS Pitch Controller</h2>
+
+    <div class="slider-block">
+      <label>OpenAI API Key</label>
+      <input id="openaiApiKey" type="password" />
+    </div>
+
+    <div class="slider-block">
+      <label>Engine</label>
+      <select id="engineSelector">
+        <option value="tone">Tone.js</option>
+        <option value="sound">SoundTouch</option>
+      </select>
+    </div>
+
+    <div class="slider-block">
+      <label>Voice</label>
+      <select id="voiceSelector">
+        <option value="sage">Sage (female)</option>
+        <option value="coral">Coral (female)</option>
+        <option value="nova">Nova (female)</option>
+        <option value="shimmer">Shimmer (female)</option>
+        <option value="alloy">Alloy (female)</option>
+        <option value="echo">Echo (male)</option>
+        <option value="fable">Fable (male)</option>
+        <option value="ash">Ash (male)</option>
+        <option value="ballad">Ballad (male)</option>
+        <option value="onyx">Onyx (male)</option>
+      </select>
+    </div>
+
+    <div id="toneControls" class="slider-block block">
+      <h4>Tone Controls</h4>
+      <div>
+        <label>Pitch (semitones): <span id="tonePitchVal">0</span></label>
+        <input
+          id="tonePitch"
+          type="range"
+          min="-24"
+          max="24"
+          step="0"
+          value="0"
+        />
+      </div>
+      <div>
+        <label>Window Size: <span id="toneWindowVal">0.02</span></label>
+        <input
+          id="toneWindow"
+          type="range"
+          min="0.005"
+          max="0.25"
+          step="0.005"
+          value="0.02"
+        />
+      </div>
+      <div>
+        <label>Delay Time: <span id="toneDelayVal">0</span></label>
+        <input
+          id="toneDelay"
+          type="range"
+          min="0"
+          max="0.1"
+          step="0.001"
+          value="0"
+        />
+      </div>
+      <div>
+        <label>Change Volume <span id="toneVolumeVal">0</span></label>
+        <input
+          id="toneVolume"
+          type="range"
+          min="-50"
+          max="50"
+          step="1"
+          value="+0"
+        />
+      </div>
+    </div>
+
+    <div id="soundControls" class="slider-block block hidden">
+      <h4>SoundTouch Controls</h4>
+      <div>
+        <label>Pitch: <span id="soundPitchVal">1.0</span></label>
+        <input
+          id="soundPitch"
+          type="range"
+          min="0.25"
+          max="4"
+          step="0.01"
+          value="1"
+        />
+      </div>
+      <div>
+        <label
+          >Pitch Semitones: <span id="soundPitchSemitonesVal">0</span></label
+        >
+        <input
+          id="soundPitchSemitones"
+          type="range"
+          min="-24"
+          max="24"
+          step="1"
+          value="0"
+        />
+      </div>
+      <div>
+        <label>Rate: <span id="soundRateVal">1.0</span></label>
+        <input
+          id="soundRate"
+          type="range"
+          min="0.25"
+          max="4"
+          step="0.01"
+          value="1"
+        />
+      </div>
+      <div>
+        <label>Tempo: <span id="soundTempoVal">1.0</span></label>
+        <input
+          id="soundTempo"
+          type="range"
+          min="0.25"
+          max="4"
+          step="0.01"
+          value="1"
+        />
+      </div>
+    </div>
+
+    <div class="slider-block">
+      <label>Instructions (optional)</label>
+      <textarea id="instructions">
+You are an enthusiastic voice assistant.</textarea
+      >
+    </div>
+
+    <div class="slider-block">
+      <label>Input Text</label>
+      <textarea id="inputText">Hi, my name is Sophia!</textarea>
+    </div>
+
+    <div class="row">
+      <button id="convert">Convert TTS</button>
+      <button id="play" disabled>Play</button>
+      <button id="stop" disabled>Stop</button>
+      <button id="recordMp3" disabled>Record & Download MP3</button>
+      <button id="downloadMp3" class="hidden" disabled>Download MP3</button>
+    </div>
+
+    <p id="status">
+      Note: If you change the voice, first click on 'Convert TTS' to obtain the
+      audio blob from the OpenAI TTS API before changing any parameters and
+      playing it.
+    </p>
+
+    <script src="/scripts/script.js"></script>
+  </body>
+</html>
