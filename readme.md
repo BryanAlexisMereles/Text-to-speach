@@ -3,9 +3,7 @@
 A very simple controller using **OpenAI Text-to-Speech**, **Tone.js**, and **SoundTouch** to manipulate pitch
 
 This project lets you enter text, convert it into audio using the OpenAI TTS API, and then modify the sound using different processing engines (**Tone.js** or **SoundTouch**).  
-It also includes the ability to **record and download the final audio as an MP3 using lame.js**.
-
----
+It also includes the ability to **download the final audio as an MP3 using lame.js**.
 
 ## 🚀 Features
 
@@ -40,8 +38,6 @@ Allows adjustments for:
 - Buttons to play, stop, record, and download audio.
 - MP3 generation powered by **lame.js**.
 
----
-
 ## 🛠️ Requirements
 
 - A modern browser supporting:
@@ -49,8 +45,6 @@ Allows adjustments for:
   - AudioContext
   - AudioWorklet
 - A valid **OpenAI API Key**.
-
----
 
 ## 🧪 How to Use
 
@@ -63,14 +57,10 @@ Allows adjustments for:
 6. Click **Play** to listen.
 7. To save the result, use **Record & Download MP3**.
 
----
-
 ## 🤝 Contributing
 
 Contributions are welcome!  
 Feel free to open an issue or submit a PR if you want to add features, improvements, or new sound engines.
-
----
 
 ## 📜 License
 
